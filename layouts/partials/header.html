@@ -1,0 +1,27 @@
+<header class="header">
+    <div class="header-inner">
+        <a href="{{ .Site.BaseURL }}" class="logo" aria-label="Home">
+            ~/portfolio
+        </a>
+
+        <nav class="nav" aria-label="Main navigation">
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links">
+                {{ range .Site.Menus.main }}
+                <li>
+                    <a href="{{ .URL }}" class="nav-link{{ if $.IsMenuCurrent " main" . }} active{{ end }}">
+                        {{ .Name }}
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                🌙
+            </button>
+        </nav>
+    </div>
+</header>

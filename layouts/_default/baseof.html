@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}" data-theme="dark">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body>
+  {{/* Skip link for accessibility */}}
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+  
+  {{- partial "header.html" . -}}
+  
+  <main id="main-content">
+    {{- block "main" . }}{{- end }}
+  </main>
+  
+  {{- partial "footer.html" . -}}
+  
+  {{/* Theme toggle script */}}
+  <script>
+    // Initialize theme from localStorage or system preference
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+    
+    // Theme toggle functionality
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
+    
+    function updateThemeIcon(theme) {
+      const icon = document.querySelector('.theme-toggle');
+      if (icon) {
+        icon.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+        icon.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+    }
+    
+    // Update icon on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const theme = document.documentElement.getAttribute('data-theme');
+      updateThemeIcon(theme);
+    });
+  </script>
+  
+  {{/* Mobile menu script */}}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('open');
+          const isOpen = navLinks.classList.contains('open');
+          menuToggle.setAttribute('aria-expanded', isOpen);
+          menuToggle.innerHTML = isOpen ? '✕' : '☰';
+        });
+      }
+    });
+  </script>
+  
+  {{/* Mermaid.js support */}}
+  {{ if .Params.mermaid }}
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const theme = document.documentElement.getAttribute('data-theme');
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: theme === 'dark' ? 'dark' : 'default',
+        securityLevel: 'loose'
+      });
+    });
+  </script>
+  {{ end }}
+</body>
+</html>

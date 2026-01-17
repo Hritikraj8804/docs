@@ -1,0 +1,16 @@
+{{ define "main" }}
+<div class="container main-content">
+    <article class="content">
+        <header style="margin-bottom: var(--space-xl);">
+            <h1 style="margin-top: 0;">{{ .Title }}</h1>
+            {{ if .Date }}
+            <p class="text-muted" style="font-family: var(--font-mono); font-size: 0.875rem;">
+                {{ .Date.Format "January 2, 2006" }} • {{ .ReadingTime }} min read
+            </p>
+            {{ end }}
+        </header>
+
+        {{ .Content }}
+    </article>
+</div>
+{{ end }}

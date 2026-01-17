@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div class="container main-content">
+    <div class="page-hero">
+        <h1>{{ .Title }}</h1>
+        <p>Short-form technical snippets and quick fixes</p>
+    </div>
+
+    {{ $pages := .Pages.GroupByDate "January 2006" }}
+    {{ range $pages }}
+    <div class="feed-date-group">
+        <div class="feed-date">━━━ {{ .Key }} ━━━</div>
+        {{ range .Pages }}
+        <article class="feed-item">
+            <span class="feed-marker">▸</span>
+            <div class="feed-content">
+                <h4 class="feed-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                <p class="feed-excerpt">{{ .Summary | truncate 200 }}</p>
+                <div class="card-tags" style="margin-top: var(--space-sm);">
+                    {{ range first 3 .Params.tags }}
+                    <span class="tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+            </div>
+            <div class="feed-meta">{{ .Date.Format "Jan 2" }}</div>
+        </article>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+{{ end }}

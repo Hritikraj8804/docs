@@ -1,0 +1,88 @@
+baseURL = "https://example.com/"
+languageCode = "en-us"
+title = "Dev Portfolio"
+enableRobotsTXT = true
+enableGitInfo = false
+
+# Reading time settings
+hasCJKLanguage = false
+summaryLength = 70
+
+[params]
+  description = "DevOps Engineer & Open Source Contributor"
+  author = "Your Name"
+  github = "https://github.com/yourusername"
+  linkedin = "https://linkedin.com/in/yourusername"
+  email = "you@example.com"
+  resumePDF = "/resume.pdf"
+  
+  # Theme settings
+  defaultTheme = "dark"
+  accentColor = "#00FF41"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "projects"
+    name = "Project Docs"
+    url = "/projects/"
+    weight = 2
+  [[menu.main]]
+    identifier = "opensource"
+    name = "Open Source"
+    url = "/opensource/"
+    weight = 3
+  [[menu.main]]
+    identifier = "lab-notes"
+    name = "Lab Notes"
+    url = "/lab-notes/"
+    weight = 4
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 5
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ""
+    hl_inline = false
+    lineAnchors = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = false
+    noHl = false
+    style = "monokai"
+    tabWidth = 4
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 2
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true

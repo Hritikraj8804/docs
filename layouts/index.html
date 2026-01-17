@@ -1,0 +1,80 @@
+{{ define "main" }}
+<div class="container main-content">
+    <!-- Terminal-style intro -->
+    <div class="terminal">
+        <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">~/portfolio — bash</span>
+        </div>
+        <div class="terminal-body">
+            <div class="terminal-line">
+                <span class="terminal-prompt">$ </span>
+                <span class="terminal-command">whoami</span>
+            </div>
+            <div class="terminal-line terminal-output">
+                > {{ .Site.Params.author | default "Your Name" }} — DevOps Engineer & Open Source Contributor
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">$ </span>
+                <span class="terminal-command">cat skills.txt</span>
+            </div>
+            <div class="terminal-line terminal-output">
+                > Kubernetes | Terraform | Go | Python | CI/CD | Docker
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">$ </span>
+                <span class="terminal-command">cat mission.txt</span>
+            </div>
+            <div class="terminal-line terminal-output">
+                > Building reliable infrastructure and sharing knowledge through code
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Projects -->
+    <section>
+        <h2>Featured Projects</h2>
+        <div class="card-grid">
+            {{ range first 4 (where .Site.RegularPages "Section" "projects") }}
+            <article class="card">
+                <h3 class="card-title">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h3>
+                <p class="card-description">{{ .Summary | truncate 120 }}</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        {{ range first 3 .Params.tags }}
+                        <span class="tag">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    <span class="reading-time">⏱ {{ .ReadingTime }} min</span>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        <p style="text-align: center;">
+            <a href="/projects/" class="btn btn-secondary">View All Projects →</a>
+        </p>
+    </section>
+
+    <!-- Latest Lab Notes -->
+    <section style="margin-top: var(--space-3xl);">
+        <h2>Latest Lab Notes</h2>
+        {{ range first 3 (where .Site.RegularPages "Section" "lab-notes") }}
+        <div class="feed-item">
+            <span class="feed-marker">▸</span>
+            <div class="feed-content">
+                <h4 class="feed-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+                <p class="feed-excerpt">{{ .Summary | truncate 100 }}</p>
+            </div>
+            <div class="feed-meta">{{ .Date.Format "Jan 2" }}</div>
+        </div>
+        {{ end }}
+        <p style="text-align: center; margin-top: var(--space-lg);">
+            <a href="/lab-notes/" class="btn btn-ghost">Read All Notes →</a>
+        </p>
+    </section>
+</div>
+{{ end }}

@@ -1,0 +1,27 @@
+{{ define "main" }}
+<div class="container main-content">
+    <div class="page-hero">
+        <h1>{{ .Title }}</h1>
+        <p>Pull requests, issues, and contributions to open source projects</p>
+    </div>
+
+    {{ range .Pages }}
+    <article class="contribution-card">
+        <div class="contribution-icon">🔀</div>
+        <div class="contribution-content">
+            <h3 class="contribution-title">
+                <a href="{{ .Params.prLink | default .Permalink }}">{{ .Title }}</a>
+            </h3>
+            <div class="contribution-repo">
+                {{ .Params.repo }} • PR #{{ .Params.prNumber | default "---" }}
+            </div>
+            <p class="card-description">{{ .Summary | truncate 200 }}</p>
+            <span class="contribution-status {{ .Params.status | default " open" }}">
+                {{ if eq .Params.status "merged" }}✅ Merged{{ else if eq .Params.status "closed" }}❌ Closed{{ else }}🔵
+                Open{{ end }}
+            </span>
+        </div>
+    </article>
+    {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,16 @@
+<footer class="footer">
+    <div class="footer-inner">
+        <p class="footer-text">
+            <span class="terminal-prompt">$</span> echo "Built with Hugo"
+            <span class="text-muted">// {{ now.Year }}</span>
+        </p>
+        <div class="footer-links">
+            {{ with .Site.Params.github }}<a href="{{ . }}" class="footer-link" target="_blank"
+                rel="noopener">GitHub</a>{{ end }}
+            {{ with .Site.Params.linkedin }}<a href="{{ . }}" class="footer-link" target="_blank"
+                rel="noopener">LinkedIn</a>{{ end }}
+            {{ with .Site.Params.email }}<a href="mailto:{{ . }}" class="footer-link">Email</a>{{ end }}
+            <a href="{{ .Site.BaseURL }}index.xml" class="footer-link">RSS</a>
+        </div>
+    </div>
+</footer>

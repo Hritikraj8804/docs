@@ -1,0 +1,38 @@
+# Hugo build output
+/public/
+/resources/_gen/
+
+# Hugo cache
+.hugo_build.lock
+
+# Dependencies
+/node_modules/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Draft content (optional - remove if you want to track drafts)
+# content/drafts/

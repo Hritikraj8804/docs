@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="container main-content">
+    <article class="content">
+        <header style="margin-bottom: var(--space-xl);">
+            <h1 style="margin-top: 0;">{{ .Title }}</h1>
+            <p class="text-muted" style="font-family: var(--font-mono); font-size: 0.875rem;">
+                {{ .Date.Format "January 2, 2006" }} • {{ .ReadingTime }} min read
+            </p>
+            <div class="card-tags" style="margin-top: var(--space-sm);">
+                {{ range .Params.tags }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+        </header>
+
+        {{ .Content }}
+
+        <nav style="margin-top: var(--space-3xl); padding-top: var(--space-xl); border-top: 1px solid var(--border);">
+            <a href="/lab-notes/" class="btn btn-ghost">← Back to Lab Notes</a>
+        </nav>
+    </article>
+</div>
+{{ end }}

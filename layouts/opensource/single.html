@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="container main-content">
+    <article class="content">
+        <header style="margin-bottom: var(--space-xl);">
+            <h1 style="margin-top: 0;">{{ .Title }}</h1>
+            <div class="contribution-repo" style="margin-bottom: var(--space-sm);">
+                {{ .Params.repo }} • PR #{{ .Params.prNumber | default "---" }}
+            </div>
+            <span class="contribution-status {{ .Params.status | default " open" }}">
+                {{ if eq .Params.status "merged" }}✅ Merged{{ else if eq .Params.status "closed" }}❌ Closed{{ else }}🔵
+                Open{{ end }}
+            </span>
+        </header>
+
+        {{ .Content }}
+
+        <div style="margin-top: var(--space-xl);">
+            {{ with .Params.prLink }}
+            <a href="{{ . }}" class="btn btn-primary" target="_blank">View Pull Request →</a>
+            {{ end }}
+            <a href="/opensource/" class="btn btn-ghost">← Back to Contributions</a>
+        </div>
+    </article>
+</div>
+{{ end }}
