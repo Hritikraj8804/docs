@@ -65,49 +65,58 @@ I specialize in **Kubernetes**, **Terraform**, and **CI/CD pipelines**. When I'm
 
 ---
 
-## Experience
+## Learning Journey
 
 <div class="timeline">
   <div class="timeline-item">
     <div class="timeline-date">2024 - Present</div>
-    <h4 class="timeline-title">Senior DevOps Engineer</h4>
-    <div class="timeline-company">TechCorp Inc.</div>
+    <h4 class="timeline-title">Self-Learning DevOps & Cloud</h4>
+    <div class="timeline-company">Independent Learner</div>
     <p class="timeline-description">
-      Leading infrastructure automation initiatives. Reduced deployment time by 80% through GitOps implementation. Managing 50+ microservices across multiple Kubernetes clusters.
+      Deep-diving into Kubernetes, Terraform, and CI/CD pipelines. Building personal projects to gain hands-on experience with production-grade infrastructure patterns.
     </p>
   </div>
   <div class="timeline-item">
-    <div class="timeline-date">2022 - 2024</div>
-    <h4 class="timeline-title">DevOps Engineer</h4>
-    <div class="timeline-company">StartupXYZ</div>
+    <div class="timeline-date">2023 - 2024</div>
+    <h4 class="timeline-title">Cloud & Container Technologies</h4>
+    <div class="timeline-company">Self-Taught</div>
     <p class="timeline-description">
-      Built CI/CD pipelines from scratch. Migrated legacy infrastructure to Kubernetes. Implemented monitoring and alerting with Prometheus.
+      Learned Docker, AWS fundamentals, and infrastructure as code. Built and deployed applications on cloud platforms. Started contributing to open source projects.
     </p>
   </div>
   <div class="timeline-item">
-    <div class="timeline-date">2020 - 2022</div>
-    <h4 class="timeline-title">Systems Administrator</h4>
-    <div class="timeline-company">Enterprise Solutions</div>
+    <div class="timeline-date">2022 - 2023</div>
+    <h4 class="timeline-title">Programming & Linux Fundamentals</h4>
+    <div class="timeline-company">Self-Taught</div>
     <p class="timeline-description">
-      Managed Linux servers and VMware infrastructure. Automated routine tasks with Ansible. First exposure to containerization with Docker.
+      Mastered Python and Bash scripting. Set up Linux environments and learned system administration basics. Built automation scripts for daily tasks.
     </p>
   </div>
 </div>
 
----
 
-## Certifications
 
-- **CKA** - Certified Kubernetes Administrator
-- **AWS Solutions Architect** - Associate
-- **HashiCorp Terraform** - Associate
+## 🚀 Currently Learning
 
----
+- **DevOps with AI** Exploring how AI/ML can automate and enhance DevOps workflows
+- Building intelligent CI/CD pipelines and automated infrastructure management
+- Integrating LLMs and AI tools into development and operations processes
+
+
+
+## 🎯 Goals
+
+Looking for a **Junior DevOps Engineer** position where I can:
+- Apply my self-taught skills in a real-world environment
+- Learn from experienced engineers and grow professionally
+- Contribute to building reliable, scalable infrastructure
+
+
 
 ## Get In Touch
 
 I'm always open to discussing DevOps, infrastructure, or potential collaborations.
 
-- 📧 Email: [hritikraj8804@gmail.com](mailto:hritikraj8804@gmail.com)
-- 💼 LinkedIn: [linkedin.com/in/hritik-raj-8804hr](https://www.linkedin.com/in/hritik-raj-8804hr/)
-- 🐙 GitHub: [github.com/Hritikraj8804](https://github.com/Hritikraj8804)
+- 📧 [Email](mailto:hritikraj8804@gmail.com)
+- 💼 [LinkedIn](https://www.linkedin.com/in/hritik-raj-8804hr/)
+- 🐙 [GitHub](https://github.com/Hritikraj8804)
