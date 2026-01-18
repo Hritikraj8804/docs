@@ -11,7 +11,7 @@
             <h3 class="card-title">
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
             </h3>
-            <p class="card-description">{{ .Summary | truncate 150 }}</p>
+            <p class="card-description">{{ .Params.description | default .Summary | truncate 150 }}</p>
             <div class="card-meta">
                 <div class="card-tags">
                     {{ with .Params.tags }}{{ range first 4 . }}
