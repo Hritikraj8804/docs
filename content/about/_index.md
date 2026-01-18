@@ -104,7 +104,27 @@ I specialize in **Kubernetes**, **Terraform**, and **CI/CD pipelines**. When I'm
 
 
 
-## 🎯 Goals
+## � Current Challenge
+
+<div class="card" style="margin: var(--space-lg) 0;">
+  <h3 class="card-title" style="margin-top: 0;">#50DaysOfCloud ☁️</h3>
+  <p class="card-description">
+    Documenting my 50-day journey learning cloud technologies. Building hands-on projects and sharing daily progress.
+  </p>
+  <div class="card-tags">
+    <span class="tag">AWS</span>
+    <span class="tag">Cloud</span>
+    <span class="tag">DevOps</span>
+    <span class="tag">Learning</span>
+  </div>
+  <p style="margin-top: var(--space-md);">
+    <a href="/lab-notes/" class="btn btn-secondary">View Progress →</a>
+  </p>
+</div>
+
+
+
+## �🎯 Goals
 
 Looking for a **Junior DevOps Engineer** position where I can:
 - Apply my self-taught skills in a real-world environment
