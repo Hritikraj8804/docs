@@ -4,6 +4,7 @@ date: 2025-11-01
 tags: ["Java", "Spring Boot", "MySQL", "Vue.js", "JWT"]
 description: "Enterprise-grade Food Ordering System featuring JWT authentication, RBAC, and real-time order processing"
 source: "https://github.com/Hritikraj8804/food-ordering-system"
+featured: true
 ---
 
 ## Overview

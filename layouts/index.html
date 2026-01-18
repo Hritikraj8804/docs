@@ -37,12 +37,14 @@
     <section>
         <h2>Featured Projects</h2>
         <div class="card-grid">
-            {{ range first 4 (where .Site.RegularPages "Section" "projects") }}
+            {{ range (where .Site.RegularPages "Params.featured" true) }}
             <article class="card">
+                {{ if .Params.link }}<span class="live-indicator" style="top: var(--space-md); right: var(--space-md);"
+                    title="Live Project Available"></span>{{ end }}
                 <h3 class="card-title">
                     <a href="{{ .Permalink }}">{{ .Title }}</a>
                 </h3>
-                <p class="card-description">{{ .Summary | truncate 120 }}</p>
+                <p class="card-description">{{ .Params.description | default .Summary | truncate 120 }}</p>
                 <div class="card-meta">
                     <div class="card-tags">
                         {{ with .Params.tags }}{{ range first 3 . }}
