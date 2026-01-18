@@ -15,20 +15,20 @@
   --text-primary: #24292f;
   --text-secondary: #57606a;
   --text-muted: #8b949e;
-  --accent: #00FF41;
-  --accent-dim: rgba(0, 255, 65, 0.15);
-  --accent-hover: #00cc33;
+  --accent: #0969da;
+  --accent-dim: rgba(9, 105, 218, 0.1);
+  --accent-hover: #0550ae;
   --border: #d0d7de;
   --border-light: #e1e4e8;
   --shadow: rgba(0, 0, 0, 0.1);
   --card-bg: #ffffff;
   --terminal-bg: #24292f;
   --terminal-text: #00FF41;
-  
+
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-  
+
   /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -37,16 +37,16 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --space-3xl: 4rem;
-  
+
   /* Layout */
   --max-width: 1200px;
   --sidebar-width: 280px;
   --header-height: 64px;
-  
+
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
-  
+
   /* Border Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -74,7 +74,9 @@
 }
 
 /* --- Reset & Base --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -97,7 +99,12 @@ body {
 }
 
 /* --- Typography --- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-mono);
   font-weight: 600;
   line-height: 1.3;
@@ -106,15 +113,46 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--space-md);
 }
 
-h1 { font-size: 2.25rem; }
-h2 { font-size: 1.75rem; border-bottom: 1px solid var(--border); padding-bottom: var(--space-sm); }
-h3 { font-size: 1.375rem; }
-h4 { font-size: 1.125rem; }
-h5, h6 { font-size: 1rem; }
+h1 {
+  font-size: 2.25rem;
+}
 
-h1::before { content: "# "; color: var(--accent); opacity: 0.7; }
-h2::before { content: "## "; color: var(--accent); opacity: 0.5; }
-h3::before { content: "### "; color: var(--accent); opacity: 0.3; }
+h2 {
+  font-size: 1.75rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-sm);
+}
+
+h3 {
+  font-size: 1.375rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+h5,
+h6 {
+  font-size: 1rem;
+}
+
+h1::before {
+  content: "# ";
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+h2::before {
+  content: "## ";
+  color: var(--accent);
+  opacity: 0.5;
+}
+
+h3::before {
+  content: "### ";
+  color: var(--accent);
+  opacity: 0.3;
+}
 
 p {
   margin-bottom: var(--space-md);
@@ -182,7 +220,7 @@ pre code {
   color: var(--text-muted);
 }
 
-.code-header + pre {
+.code-header+pre {
   margin-top: 0;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
@@ -342,11 +380,11 @@ pre code {
     flex-direction: column;
     padding: var(--space-md);
   }
-  
+
   .nav-links.open {
     display: flex;
   }
-  
+
   .mobile-menu-toggle {
     display: block;
   }
@@ -375,9 +413,17 @@ pre code {
   border-radius: 50%;
 }
 
-.terminal-dot.red { background: #ff5f56; }
-.terminal-dot.yellow { background: #ffbd2e; }
-.terminal-dot.green { background: #27ca40; }
+.terminal-dot.red {
+  background: #ff5f56;
+}
+
+.terminal-dot.yellow {
+  background: #ffbd2e;
+}
+
+.terminal-dot.green {
+  background: #27ca40;
+}
 
 .terminal-title {
   flex: 1;
@@ -534,7 +580,7 @@ pre code {
   .sidebar {
     display: none;
   }
-  
+
   .sidebar.open {
     display: block;
     position: fixed;
@@ -1065,7 +1111,8 @@ table {
   font-size: 0.9rem;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--border);
@@ -1083,7 +1130,8 @@ tr:hover {
 }
 
 /* --- Lists --- */
-ul, ol {
+ul,
+ol {
   margin: var(--space-md) 0;
   padding-left: var(--space-xl);
 }
@@ -1107,10 +1155,22 @@ li::marker {
 }
 
 /* --- Utility Classes --- */
-.text-center { text-align: center; }
-.text-muted { color: var(--text-muted); }
-.mt-0 { margin-top: 0; }
-.mb-0 { margin-bottom: 0; }
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1148,6 +1208,7 @@ li::marker {
 
 /* --- Print Styles --- */
 @media print {
+
   .header,
   .footer,
   .sidebar,
@@ -1155,12 +1216,12 @@ li::marker {
   .toc {
     display: none;
   }
-  
+
   body {
     background: white;
     color: black;
   }
-  
+
   a {
     color: black;
     text-decoration: underline;
