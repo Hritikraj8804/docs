@@ -39,6 +39,7 @@
         <div class="card-grid">
             {{ range (where .Site.RegularPages "Params.featured" true) }}
             <article class="card">
+                <span class="project-month">{{ .Date.Format "Jan" }}</span>
                 {{ if .Params.link }}<span class="live-indicator" style="top: var(--space-md); right: var(--space-md);"
                     title="Live Project Available"></span>{{ end }}
                 <h3 class="card-title">
@@ -51,7 +52,7 @@
                         <span class="tag">{{ . }}</span>
                         {{ end }}{{ end }}
                     </div>
-                    <span class="reading-time" title="Project Date">📅 {{ .Date.Format "Jan 2006" }}</span>
+
                 </div>
             </article>
             {{ end }}
