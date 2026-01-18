@@ -10,10 +10,10 @@ summaryLength = 70
 
 [params]
   description = "DevOps Engineer & Open Source Contributor"
-  author = "Your Name"
-  github = "https://github.com/yourusername"
-  linkedin = "https://linkedin.com/in/yourusername"
-  email = "you@example.com"
+  author = "Hritik Raj"
+  github = "https://github.com/Hritikraj8804"
+  linkedin = "https://www.linkedin.com/in/hritik-raj-8804hr/"
+  email = "hritikraj8804@gmail.com"
   resumePDF = "/resume.pdf"
   
   # Theme settings

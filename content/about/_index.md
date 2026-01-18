@@ -3,17 +3,18 @@ title: "About"
 ---
 
 <div class="about-header">
+  <img src="/avatar.png" alt="Hritik Raj" class="about-avatar">
   <div class="about-bio">
 
-## Hi, I'm [Your Name] 👋
+## Hi, I'm Hritik Raj 👋
 
 I'm a **DevOps Engineer** and **Open Source Contributor** passionate about building reliable infrastructure and sharing knowledge through code.
 
 I specialize in **Kubernetes**, **Terraform**, and **CI/CD pipelines**. When I'm not automating deployments, I'm contributing to open source projects and writing technical documentation.
 
 <div style="margin-top: var(--space-lg);">
-  <a href="/resume.pdf" class="btn btn-primary">📄 Download Resume</a>
-  <a href="https://github.com/yourusername" class="btn btn-secondary" target="_blank">GitHub →</a>
+  <!-- <a href="/resume.pdf" class="btn btn-primary">📄 Download Resume</a> -->
+  <a href="https://github.com/Hritikraj8804" class="btn btn-secondary" target="_blank">GitHub →</a>
 </div>
 
   </div>
@@ -107,6 +108,6 @@ I specialize in **Kubernetes**, **Terraform**, and **CI/CD pipelines**. When I'm
 
 I'm always open to discussing DevOps, infrastructure, or potential collaborations.
 
-- 📧 Email: [you@example.com](mailto:you@example.com)
-- 💼 LinkedIn: [linkedin.com/in/yourusername](https://linkedin.com/in/yourusername)
-- 🐙 GitHub: [github.com/yourusername](https://github.com/yourusername)
+- 📧 Email: [hritikraj8804@gmail.com](mailto:hritikraj8804@gmail.com)
+- 💼 LinkedIn: [linkedin.com/in/hritik-raj-8804hr](https://www.linkedin.com/in/hritik-raj-8804hr/)
+- 🐙 GitHub: [github.com/Hritikraj8804](https://github.com/Hritikraj8804)
