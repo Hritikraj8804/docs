@@ -503,6 +503,34 @@ pre code {
   font-weight: 600;
   margin-bottom: var(--space-sm);
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.live-indicator {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+  z-index: 10;
+}
+
+@keyframes pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
 }
 
 .card-title::before {
