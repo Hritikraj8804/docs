@@ -45,9 +45,9 @@
                 <p class="card-description">{{ .Summary | truncate 120 }}</p>
                 <div class="card-meta">
                     <div class="card-tags">
-                        {{ range first 3 .Params.tags }}
+                        {{ with .Params.tags }}{{ range first 3 . }}
                         <span class="tag">{{ . }}</span>
-                        {{ end }}
+                        {{ end }}{{ end }}
                     </div>
                     <span class="reading-time">⏱ {{ .ReadingTime }} min</span>
                 </div>
