@@ -51,7 +51,7 @@
                         <span class="tag">{{ . }}</span>
                         {{ end }}{{ end }}
                     </div>
-                    <span class="reading-time">⏱ {{ .ReadingTime }} min</span>
+                    <span class="reading-time" title="Project Date">📅 {{ .Date.Format "Jan 2006" }}</span>
                 </div>
             </article>
             {{ end }}

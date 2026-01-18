@@ -519,6 +519,16 @@ pre code {
   z-index: 10;
 }
 
+.project-month {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+}
+
 @keyframes pulse-dot {
   0% {
     box-shadow: 0 0 0 0 var(--accent);
