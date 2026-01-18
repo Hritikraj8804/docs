@@ -1,7 +1,7 @@
 ---
 title: "Pariksha"
 date: 2025-04-05
-tags: ["PHP", "MySQL", "Web", "Education"]
+tags: ["PHP", "MySQL", "JavaScript", "Full Stack"]
 description: "Comprehensive online examination management system for educational institutions"
 source: "https://github.com/Hritikraj8804/Pariksha"
 ---

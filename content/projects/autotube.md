@@ -1,7 +1,7 @@
 ---
 title: "AutoTube"
 date: 2025-12-10
-tags: ["Python", "n8n", "AI", "Docker", "YouTube API"]
+tags: ["Python", "Generative AI", "LLM", "n8n", "Docker"]
 description: "Automated YouTube Shorts factory powered by AI agents, n8n workflows, and Docker"
 source: "https://github.com/Hritikraj8804/Autotube"
 ---

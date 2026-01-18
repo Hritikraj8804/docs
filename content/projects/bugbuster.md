@@ -1,7 +1,7 @@
 ---
 title: "BugBuster"
 date: 2024-11-01
-tags: ["JavaScript", "HTML", "Open Source", "API"]
+tags: ["JavaScript", "GitHub API", "Open Source", "Automation"]
 description: "Tool helping new developers find beginner-friendly open source issues on GitHub"
 source: "https://github.com/Hritikraj8804/BugBuster"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Sentiment-Analysis"
 date: 2025-02-13
-tags: ["Node.js", "Python", "NLP", "Express", "TextBlob"]
+tags: ["Node.js", "Python", "NLP", "Machine Learning", "Express"]
 description: "Hybrid web application combining Node.js backend with Python analysis engine for advanced sentiment detection"
 source: "https://github.com/Hritikraj8804/Sentiment-Analysis"
 link: "https://sentiment.chcha.in"

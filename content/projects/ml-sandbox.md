@@ -1,7 +1,7 @@
 ---
 title: "ML-Sandbox"
 date: 2024-12-27
-tags: ["Python", "Jupyter", "Flask", "ML"]
+tags: ["Python", "Flask", "Machine Learning", "Data Science", "Jupyter"]
 description: "Interactive platform for executing ML algorithms on uploaded datasets using a Jupyter backend"
 source: "https://github.com/Hritikraj8804/ML-Sandbox"
 link: "https://sandbox.chcha.in"

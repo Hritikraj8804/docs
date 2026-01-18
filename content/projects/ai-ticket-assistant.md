@@ -1,7 +1,7 @@
 ---
 title: "AI Ticket Assistant"
 date: 2025-06-28
-tags: ["React", "Node.js", "MongoDB", "Google Gemini", "Tailwind"]
+tags: ["MERN Stack", "Generative AI", "Google Gemini", "TailwindCSS"]
 description: "Smart support ticket system powered by Google Gemini AI for automated triage and skill matching"
 source: "https://github.com/Hritikraj8804/AI-ticket-assistant"
 ---
