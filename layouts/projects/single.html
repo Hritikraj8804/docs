@@ -40,6 +40,20 @@
             </div>
         </header>
 
+        <div class="project-links" style="margin-bottom: var(--space-xl); display: flex; gap: var(--space-md);">
+            {{ with .Params.link }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                🚀 Visit Project
+            </a>
+            {{ end }}
+
+            {{ with .Params.source }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                💻 Source Code
+            </a>
+            {{ end }}
+        </div>
+
         {{ .Content }}
 
         <!-- Prev/Next navigation -->

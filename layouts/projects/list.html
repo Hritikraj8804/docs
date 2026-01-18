@@ -5,23 +5,29 @@
         {{ with .Description }}<p>{{ . }}</p>{{ end }}
     </div>
 
+    {{ range .Pages.GroupByDate "2006" }}
+    <h2
+        style="margin-top: var(--space-2xl); border-bottom: 2px solid var(--border-light); padding-bottom: var(--space-sm);">
+        {{ .Key }}</h2>
     <div class="card-grid">
         {{ range .Pages }}
         <article class="card">
+            <span class="project-month">{{ .Date.Format "Jan" }}</span>
+            {{ if .Params.link }}<span class="live-indicator" title="Live Project Available"></span>{{ end }}
             <h3 class="card-title">
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
             </h3>
-            <p class="card-description">{{ .Summary | truncate 150 }}</p>
+            <p class="card-description">{{ .Params.description | default .Summary | truncate 150 }}</p>
             <div class="card-meta">
                 <div class="card-tags">
-                    {{ range first 4 .Params.tags }}
+                    {{ with .Params.tags }}{{ range first 4 . }}
                     <span class="tag">{{ . }}</span>
-                    {{ end }}
+                    {{ end }}{{ end }}
                 </div>
-                <span class="reading-time">⏱ {{ .ReadingTime }} min</span>
             </div>
         </article>
         {{ end }}
     </div>
+    {{ end }}
 </div>
 {{ end }}
