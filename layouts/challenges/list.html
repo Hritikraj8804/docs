@@ -1,0 +1,102 @@
+{{ define "main" }}
+<div class="container main-content">
+    {{ if not .Params.target_days }}
+    <!-- ALL CHALLENGES VIEW -->
+    <div class="page-hero">
+        <h1>{{ .Title }}</h1>
+        <p class="page-subtitle">{{ .Description | default .Summary }}</p>
+    </div>
+
+    <div class="challenges-grid">
+        {{ range .Sections }}
+        <article class="challenge-card">
+            {{ with .Params.status }}
+            <div class="challenge-status-badge {{ . }}">
+                {{ . }}
+            </div>
+            {{ end }}
+            <h3 class="challenge-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p class="challenge-desc">{{ .Params.description }}</p>
+
+            {{ if and .Params.completed_days .Params.target_days }}
+            <div class="challenge-stats-mini">
+                <div class="mini-stat">
+                    <span class="label">Progress</span>
+                    <span class="value">{{ .Params.completed_days }}/{{ .Params.target_days }} Days</span>
+                </div>
+                <div class="progress-bar-container">
+                    {{ $percent := div (mul (int .Params.completed_days) 100) (int .Params.target_days) }}
+                    <div class="progress-bar" style="width: {{ $percent }}%"></div>
+                </div>
+            </div>
+            {{ end }}
+        </article>
+        {{ end }}
+    </div>
+
+    {{ else }}
+    <!-- SPECIFIC CHALLENGE VIEW (Timeline & Streak) -->
+    <div class="challenge-header">
+        <a href="/challenges/" class="back-link">← All Challenges</a>
+        <h1>{{ .Title }}</h1>
+        <p class="challenge-subtitle">{{ .Params.description }}</p>
+    </div>
+
+    <!-- Streak Dashboard -->
+    <div class="streak-dashboard">
+        <div class="streak-stat">
+            <span class="stat-icon">🔥</span>
+            <div class="stat-info">
+                <span class="stat-value">{{ .Params.current_streak | default 0 }} Days</span>
+                <span class="stat-label">Current Streak</span>
+            </div>
+        </div>
+        <div class="streak-stat">
+            <span class="stat-icon">🎯</span>
+            <div class="stat-info">
+                {{ $percent := 0 }}
+                {{ if and .Params.completed_days .Params.target_days }}
+                {{ $percent = div (mul (int .Params.completed_days) 100) (int .Params.target_days) }}
+                {{ end }}
+                <span class="stat-value">{{ $percent }}%</span>
+                <span class="stat-label">Completion</span>
+            </div>
+        </div>
+        <div class="streak-stat">
+            <span class="stat-icon">✅</span>
+            <div class="stat-info">
+                <span class="stat-value">{{ .Params.completed_days | default 0 }}/{{ .Params.target_days | default 0
+                    }}</span>
+                <span class="stat-label">Total Days</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline View -->
+    <div class="challenge-timeline">
+        {{ range .Pages.ByDate.Reverse }}
+        <div class="timeline-day">
+            <div class="day-marker">
+                <span class="day-number">#{{ .Params.day_number }}</span>
+                <div class="day-line"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h3 class="day-title">{{ .Title }}</h3>
+                    <span class="day-date">{{ .Date.Format "Jan 02, 2006" }}</span>
+                </div>
+                <div class="day-body">
+                    {{ .Content }}
+                </div>
+                <div class="day-tags">
+                    {{ range .Params.tags }}
+                    <span class="tag">#{{ . }}</span>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+{{ end }}
