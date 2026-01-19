@@ -3,7 +3,7 @@ title: "About"
 ---
 
 <div class="about-header">
-  <img src="/avatar.png" alt="Hritik Raj" class="about-avatar">
+  <img src="{{< relURL "avatar.png" >}}" alt="Hritik Raj" class="about-avatar">
   <div class="about-bio">
 
 ## Hi, I'm Hritik Raj 👋
