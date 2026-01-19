@@ -2,26 +2,102 @@
 <div class="container main-content">
     <div class="page-hero">
         <h1>{{ .Title }}</h1>
-        <p>Pull requests, issues, and contributions to open source projects</p>
+        <p class="page-subtitle">Contributing to the projects I use and love</p>
     </div>
 
-    {{ range .Pages }}
-    <article class="contribution-card">
-        <div class="contribution-icon">🔀</div>
-        <div class="contribution-content">
-            <h3 class="contribution-title">
-                <a href="{{ .Params.prLink | default .Permalink }}">{{ .Title }}</a>
-            </h3>
-            <div class="contribution-repo">
-                {{ .Params.repo }} • PR #{{ .Params.prNumber | default "---" }}
+    <!-- Programs & Events -->
+    <div class="os-programs">
+        <h3 class="os-section-title">🏆 Programs & Events</h3>
+        <div class="os-badges">
+            <div class="os-badge hacktoberfest">
+                <span class="os-badge-icon">🎃</span>
+                <span class="os-badge-text">Hacktoberfest 2023</span>
             </div>
-            <p class="card-description">{{ .Summary | truncate 200 }}</p>
-            <span class="contribution-status {{ .Params.status | default " open" }}">
-                {{ if eq .Params.status "merged" }}✅ Merged{{ else if eq .Params.status "closed" }}❌ Closed{{ else }}🔵
-                Open{{ end }}
-            </span>
+            <div class="os-badge hacktoberfest">
+                <span class="os-badge-icon">🎃</span>
+                <span class="os-badge-text">Hacktoberfest 2024</span>
+            </div>
+            <div class="os-badge gssoc">
+                <span class="os-badge-icon">👩‍💻</span>
+                <span class="os-badge-text">GSSoC</span>
+            </div>
+            <div class="os-badge ssoc">
+                <span class="os-badge-icon">☀️</span>
+                <span class="os-badge-text">Social Summer of Code</span>
+            </div>
+            <div class="os-badge swoc">
+                <span class="os-badge-icon">❄️</span>
+                <span class="os-badge-text">Social Winter of Code</span>
+            </div>
+            <div class="os-badge jwoc">
+                <span class="os-badge-icon">🏔️</span>
+                <span class="os-badge-text">JGEC Winter of Code</span>
+            </div>
+            <div class="os-badge kwoc">
+                <span class="os-badge-icon">🎓</span>
+                <span class="os-badge-text">Kharagpur Winter of Code</span>
+            </div>
         </div>
-    </article>
+    </div>
+
+    <!-- Stats Bar -->
+    {{ $merged := where .Pages "Params.status" "merged" }}
+
+    <div class="os-stats-bar">
+        <span class="os-stat">✅ {{ len $merged }} PRs Merged</span>
+        <span class="os-stat-divider">•</span>
+        <span class="os-stat">📦 1 Project</span>
+        <span class="os-stat-divider">•</span>
+        <span class="os-stat">📅 2023 - {{ now.Format "2006" }}</span>
+    </div>
+
+    <!-- Contributions Section -->
+    <div class="os-project-section">
+        <h3 class="os-project-title">
+            <span class="os-project-icon">📦</span> Kestra
+        </h3>
+        <div class="os-contributions-grid">
+            {{ range .Pages.ByDate.Reverse }}
+            <article class="os-card">
+                <div class="os-card-header">
+                    <span class="os-icon">🔀</span>
+                    <span class="os-status {{ .Params.status | default " open" }}">
+                        {{ if eq .Params.status "merged" }}✅ Merged
+                        {{ else if eq .Params.status "closed" }}❌ Closed
+                        {{ else }}🔵 Open{{ end }}
+                    </span>
+                </div>
+
+                <h4 class="os-title">
+                    <a href="{{ .Params.prLink | default .Permalink }}" target="_blank" rel="noopener">
+                        {{ .Title }}
+                    </a>
+                </h4>
+
+                <div class="os-repo">
+                    {{ .Params.repo }} • #{{ .Params.prNumber | default "---" }}
+                </div>
+
+                <p class="os-description">{{ .Params.description | default (.Summary | truncate 120) }}</p>
+
+                <div class="os-card-footer">
+                    <div class="os-tags">
+                        {{ with .Params.tags }}{{ range first 3 . }}
+                        <span class="tag">{{ . }}</span>
+                        {{ end }}{{ end }}
+                    </div>
+                    <span class="os-date">{{ .Date.Format "Jan 2006" }}</span>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    {{ if eq (len .Pages) 0 }}
+    <div class="os-empty-state">
+        <p>🚀 Contributions coming soon...</p>
+    </div>
     {{ end }}
 </div>
 {{ end }}
