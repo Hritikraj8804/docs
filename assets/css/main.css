@@ -1583,6 +1583,26 @@ li::marker {
   box-shadow: 0 0 10px var(--accent);
 }
 
+.marker-dot.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.marker-dot.completed {
+  border-color: #32cd32;
+  box-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: var(--space-xl);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
 .challenge-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
@@ -1894,4 +1914,40 @@ li::marker {
     width: auto;
     align-items: flex-start;
   }
+}
+
+/* Prose Typography */
+.prose {
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.prose h3 {
+  color: var(--accent);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+  font-size: 1.4rem;
+}
+
+.prose ul {
+  list-style: none;
+  padding-left: var(--space-md);
+}
+
+.prose li {
+  position: relative;
+  margin-bottom: var(--space-xs);
+  padding-left: var(--space-lg);
+}
+
+.prose li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.prose strong {
+  color: var(--text-primary);
 }
