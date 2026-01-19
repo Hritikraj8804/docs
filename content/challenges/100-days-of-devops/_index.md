@@ -7,6 +7,7 @@ target_days: 100
 completed_days: 100
 status: "completed"
 description: "Mastering the DevOps mindset through 100 days of automation, containerization, and CI/CD pipelines."
+tags: ["Docker", "K8s", "CI/CD"]
 link: "https://github.com/Hritikraj8804/KodeKloud_Engineer/tree/main/100%20days%20of%20devops"
 ---
 

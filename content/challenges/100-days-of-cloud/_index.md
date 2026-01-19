@@ -9,6 +9,7 @@ completed_days: 39
 status: "in-progress"
 description: "A commitment to learn and build in the cloud for 100 consecutive days, focusing on real-world hands-on labs."
 featured: true
+tags: ["AWS", "Azure", "Cloud"]
 link: "https://medium.com/@hritikraj8804/list/100daysofcloud-7367f235a8b8"
 ---
 

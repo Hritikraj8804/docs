@@ -29,6 +29,15 @@
                     </div>
                     <p class="challenge-desc">{{ .Params.description }}</p>
 
+                    <div class="challenge-tags"
+                        style="margin-bottom: var(--space-md); display: flex; gap: 8px; flex-wrap: wrap;">
+                        {{ range .Params.tags }}
+                        <span class="tag"
+                            style="font-size: 0.75rem; color: var(--accent); background: rgba(0, 255, 65, 0.05); padding: 2px 8px; border-radius: 4px;">#{{
+                            . }}</span>
+                        {{ end }}
+                    </div>
+
                     {{ if and .Params.completed_days .Params.target_days }}
                     <div class="challenge-stats-mini">
                         <div class="mini-stat">
@@ -66,6 +75,15 @@
                         <h3 class="challenge-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
                     </div>
                     <p class="challenge-desc">{{ .Params.description }}</p>
+
+                    <div class="challenge-tags"
+                        style="margin-bottom: var(--space-md); display: flex; gap: 8px; flex-wrap: wrap;">
+                        {{ range .Params.tags }}
+                        <span class="tag"
+                            style="font-size: 0.75rem; color: var(--accent); background: rgba(0, 255, 65, 0.05); padding: 2px 8px; border-radius: 4px;">#{{
+                            . }}</span>
+                        {{ end }}
+                    </div>
 
                     <div class="challenge-stats-mini">
                         <div class="mini-stat">
