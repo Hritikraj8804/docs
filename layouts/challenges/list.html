@@ -7,30 +7,42 @@
         <p class="page-subtitle">{{ .Description | default .Summary }}</p>
     </div>
 
-    <div class="challenges-grid">
-        {{ range .Sections }}
-        <article class="challenge-card">
-            {{ with .Params.status }}
-            <div class="challenge-status-badge {{ . }}">
-                {{ . }}
+    <div class="challenges-main-timeline">
+        {{ range .Sections.ByDate.Reverse }}
+        <div class="main-timeline-item">
+            <div class="main-timeline-marker">
+                <div class="marker-dot"></div>
+                <div class="marker-line"></div>
             </div>
-            {{ end }}
-            <h3 class="challenge-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <p class="challenge-desc">{{ .Params.description }}</p>
+            <div class="main-timeline-content">
+                <article class="challenge-card">
+                    {{ with .Params.status }}
+                    <div class="challenge-status-badge {{ . }}">
+                        {{ . }}
+                    </div>
+                    {{ end }}
+                    <div class="challenge-card-header">
+                        <span class="challenge-card-date">{{ with .Params.start_date }}{{ (time .).Format "Jan 2006"
+                            }}{{ else }}{{ .Date.Format "Jan 2006" }}{{ end }}</span>
+                        <h3 class="challenge-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                    </div>
+                    <p class="challenge-desc">{{ .Params.description }}</p>
 
-            {{ if and .Params.completed_days .Params.target_days }}
-            <div class="challenge-stats-mini">
-                <div class="mini-stat">
-                    <span class="label">Progress</span>
-                    <span class="value">{{ .Params.completed_days }}/{{ .Params.target_days }} Days</span>
-                </div>
-                <div class="progress-bar-container">
-                    {{ $percent := div (mul (int .Params.completed_days) 100) (int .Params.target_days) }}
-                    <div class="progress-bar" style="width: {{ $percent }}%"></div>
-                </div>
+                    {{ if and .Params.completed_days .Params.target_days }}
+                    <div class="challenge-stats-mini">
+                        <div class="mini-stat">
+                            <span class="label">Progress</span>
+                            <span class="value">{{ .Params.completed_days }}/{{ .Params.target_days }} Days</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            {{ $percent := div (mul (int .Params.completed_days) 100) (int .Params.target_days) }}
+                            <div class="progress-bar" style="width: {{ $percent }}%"></div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </article>
             </div>
-            {{ end }}
-        </article>
+        </div>
         {{ end }}
     </div>
 
@@ -88,6 +100,11 @@
                 <div class="day-body">
                     {{ .content | markdownify }}
                 </div>
+                {{ if .link }}
+                <div class="day-link-action">
+                    <a href="{{ .link }}" target="_blank" class="btn btn-secondary btn-sm">Read Detail →</a>
+                </div>
+                {{ end }}
                 <div class="day-tags">
                     {{ range .tags }}
                     <span class="tag">#{{ . }}</span>
