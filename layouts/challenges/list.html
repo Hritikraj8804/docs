@@ -74,22 +74,22 @@
 
     <!-- Timeline View -->
     <div class="challenge-timeline">
-        {{ range .Pages.ByDate.Reverse }}
+        {{ range (default (slice) .Params.logs) }}
         <div class="timeline-day">
             <div class="day-marker">
-                <span class="day-number">#{{ .Params.day_number }}</span>
+                <span class="day-number">#{{ .day }}</span>
                 <div class="day-line"></div>
             </div>
             <div class="day-content">
                 <div class="day-header">
-                    <h3 class="day-title">{{ .Title }}</h3>
-                    <span class="day-date">{{ .Date.Format "Jan 02, 2006" }}</span>
+                    <h3 class="day-title">{{ .title }}</h3>
+                    <span class="day-date">{{ (time .date).Format "Jan 02, 2006" | default .date }}</span>
                 </div>
                 <div class="day-body">
-                    {{ .Content }}
+                    {{ .content | markdownify }}
                 </div>
                 <div class="day-tags">
-                    {{ range .Params.tags }}
+                    {{ range .tags }}
                     <span class="tag">#{{ . }}</span>
                     {{ end }}
                 </div>
