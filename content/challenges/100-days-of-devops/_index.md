@@ -1,8 +1,9 @@
 ---
 title: "#100DaysOfDevOps"
-date: 2023-11-01
+date: 2025-07-01
 challenge_name: "100 Days of DevOps"
-start_date: 2023-11-01
+start_date: 2025-07-01
+end_date: 2025-11-30
 target_days: 100
 completed_days: 100
 status: "completed"

@@ -23,8 +23,11 @@
                 <article class="challenge-card">
                     <div class="challenge-status-badge in-progress">Active</div>
                     <div class="challenge-card-header">
-                        <span class="challenge-card-date">{{ with .Params.start_date }}{{ (time .).Format "Jan 2006"
-                            }}{{ else }}{{ .Date.Format "Jan 2006" }}{{ end }}</span>
+                        <span class="challenge-card-date">
+                            {{ with .Params.start_date }}{{ (time .).Format "Jan 2006" }}{{ end }}
+                            {{ with .Params.end_date }} – {{ (time .).Format "Jan 2006" }}{{ end }}
+                            {{ if and (not .Params.end_date) (eq .Params.status "in-progress") }} – Present{{ end }}
+                        </span>
                         <h3 class="challenge-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
                     </div>
                     <p class="challenge-desc">{{ .Params.description }}</p>
@@ -58,9 +61,15 @@
     {{ end }}
 
     {{ if $completed }}
-    <h2 class="section-heading" style="margin-top: 4rem;">✅ Completed Challenges</h2>
+    <h2 class="section-heading" style="margin-top: 4rem;">🏆 Completed Timeline</h2>
+
+    {{ range $completed.GroupByDate "2006" "desc" }}
+    <h3 class="year-heading"
+        style="margin: 3rem 0 1.5rem; color: var(--accent); font-family: var(--font-mono); font-weight: 800; font-size: 1.8rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; display: inline-block;">
+        {{ .Key }}</h3>
+
     <div class="challenges-main-timeline">
-        {{ range $completed.ByDate.Reverse }}
+        {{ range .Pages.ByDate.Reverse }}
         <div class="main-timeline-item">
             <div class="main-timeline-marker">
                 <div class="marker-dot completed"></div>
@@ -70,8 +79,10 @@
                 <article class="challenge-card">
                     <div class="challenge-status-badge completed">Completed</div>
                     <div class="challenge-card-header">
-                        <span class="challenge-card-date">{{ with .Params.start_date }}{{ (time .).Format "Jan 2006"
-                            }}{{ else }}{{ .Date.Format "Jan 2006" }}{{ end }}</span>
+                        <span class="challenge-card-date">
+                            {{ with .Params.start_date }}{{ (time .).Format "Jan" }}{{ end }}
+                            {{ with .Params.end_date }} – {{ (time .).Format "Jan" }}{{ end }}
+                        </span>
                         <h3 class="challenge-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
                     </div>
                     <p class="challenge-desc">{{ .Params.description }}</p>
@@ -85,6 +96,7 @@
                         {{ end }}
                     </div>
 
+                    {{ if and .Params.completed_days .Params.target_days }}
                     <div class="challenge-stats-mini">
                         <div class="mini-stat">
                             <span class="label">Status</span>
@@ -94,11 +106,13 @@
                             <div class="progress-bar" style="width: 100%"></div>
                         </div>
                     </div>
+                    {{ end }}
                 </article>
             </div>
         </div>
         {{ end }}
     </div>
+    {{ end }}
     {{ end }}
 
     {{ else }}
@@ -115,7 +129,7 @@
         <div class="streak-stat">
             <span class="stat-icon">🔥</span>
             <div class="stat-info">
-                <span class="stat-value">{{ .Params.current_streak | default 0 }} Days</span>
+                <span class="stat-value">{{ .Params.current_streak| default 0 }} Days</span>
                 <span class="stat-label">Current Streak</span>
             </div>
         </div>

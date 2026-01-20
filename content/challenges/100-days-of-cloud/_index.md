@@ -1,11 +1,11 @@
 ---
 title: "#100DaysOfCloud"
-date: 2024-01-01
+date: 2025-12-01
 challenge_name: "100 Days of Cloud"
-start_date: 2024-01-01
+start_date: 2025-12-01
 target_days: 100
-current_streak: 39
-completed_days: 39
+current_streak: 40
+completed_days: 40
 status: "in-progress"
 description: "A commitment to learn and build in the cloud for 100 consecutive days, focusing on real-world hands-on labs."
 featured: true
