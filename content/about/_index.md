@@ -20,7 +20,6 @@ I specialize in **Kubernetes**, **Terraform**, and **CI/CD pipelines**. When I'm
   </div>
 </div>
 
----
 
 ## Skills
 
@@ -63,7 +62,21 @@ I specialize in **Kubernetes**, **Terraform**, and **CI/CD pipelines**. When I'm
   </div>
 </div>
 
----
+
+## 🎯 Goals
+
+Looking for a **Junior DevOps Engineer** position where I can:
+- Apply my self-taught skills in a real-world environment
+- Learn from experienced engineers and grow professionally
+- Contribute to building reliable, scalable infrastructure
+
+
+## 🚀 Currently Learning
+
+- **DevOps with AI** Exploring how AI/ML can automate and enhance DevOps workflows
+- Building intelligent CI/CD pipelines and automated infrastructure management
+- Integrating LLMs and AI tools into development and operations processes
+
 
 ## Learning Journey
 
@@ -94,23 +107,7 @@ I specialize in **Kubernetes**, **Terraform**, and **CI/CD pipelines**. When I'm
   </div>
 </div>
 
----
 
-## 🚀 Currently Learning
-
-- **DevOps with AI** Exploring how AI/ML can automate and enhance DevOps workflows
-- Building intelligent CI/CD pipelines and automated infrastructure management
-- Integrating LLMs and AI tools into development and operations processes
-
-
-## 🎯 Goals
-
-Looking for a **Junior DevOps Engineer** position where I can:
-- Apply my self-taught skills in a real-world environment
-- Learn from experienced engineers and grow professionally
-- Contribute to building reliable, scalable infrastructure
-
----
 
 ## Get In Touch
 
