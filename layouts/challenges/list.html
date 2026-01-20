@@ -49,7 +49,7 @@
                         </div>
                         <div class="progress-bar-container">
                             {{ $percent := div (mul (int .Params.completed_days) 100) (int .Params.target_days) }}
-                            <div class="progress-bar" style="width: {{ $percent }}%"></div>
+                            <div class="progress-bar" {{ printf "style='width: %d%%'" $percent | safeHTMLAttr }}></div>
                         </div>
                     </div>
                     {{ end }}
@@ -118,7 +118,7 @@
     {{ else }}
     <!-- SPECIFIC CHALLENGE VIEW (Timeline & Streak) -->
     <div class="challenge-header">
-        <a href="/challenges/" class="back-link">← All Challenges</a>
+        <a href="{{ `challenges/` | relURL }}" class="back-link">← All Challenges</a>
         <h1>{{ .Title }}</h1>
         <p class="challenge-subtitle">{{ .Params.description }}</p>
     </div>
