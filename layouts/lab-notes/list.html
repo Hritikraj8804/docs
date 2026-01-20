@@ -6,23 +6,24 @@
     </div>
 
     <!-- PLAYLISTS SECTION -->
+    {{ if .Params.playlists }}
     <section class="lab-section">
         <div class="section-header">
             <h2 class="section-heading">📚 Playlists</h2>
             <p class="section-desc">Curated blog series covering topics in-depth</p>
         </div>
         <div class="cards-grid">
-            {{ range where .Sections "Params.type" "playlist" }}
-            <a href="{{ .Params.link }}" target="_blank" rel="noopener" class="lab-card">
-                <div class="lab-card-icon">{{ .Params.icon | default "📖" }}</div>
+            {{ range .Params.playlists }}
+            <a href="{{ .link }}" target="_blank" rel="noopener" class="lab-card">
+                <div class="lab-card-icon">{{ .icon | default "📖" }}</div>
                 <div class="lab-card-content">
-                    <h3 class="lab-card-title">{{ .Title }}</h3>
-                    <p class="lab-card-desc">{{ .Params.description }}</p>
+                    <h3 class="lab-card-title">{{ .title }}</h3>
+                    <p class="lab-card-desc">{{ .description }}</p>
                     <div class="lab-card-meta">
-                        {{ with .Params.platform }}
+                        {{ with .platform }}
                         <span class="platform-badge platform-{{ . | urlize }}">{{ . }}</span>
                         {{ end }}
-                        {{ with .Params.tags }}
+                        {{ with .tags }}
                         <div class="lab-card-tags">
                             {{ range first 2 . }}<span class="tag-sm">{{ . }}</span>{{ end }}
                         </div>
@@ -31,34 +32,35 @@
                 </div>
                 <span class="lab-card-arrow">↗</span>
             </a>
-            {{ else }}
-            <p style="color: var(--text-muted); grid-column: 1/-1;">No playlists yet.</p>
             {{ end }}
         </div>
     </section>
 
     <hr class="section-divider">
+    {{ end }}
 
     <!-- BLOGS SECTION -->
+    {{ if .Params.blogs }}
     <section class="lab-section">
         <div class="section-header">
             <h2 class="section-heading">📝 Blogs</h2>
             <p class="section-desc">Standalone articles and technical notes</p>
         </div>
         <div class="cards-grid">
-            {{ range .RegularPages.ByDate.Reverse }}
-            <a href="{{ .Params.link }}" target="_blank" rel="noopener" class="lab-card lab-card-blog">
+            {{ range .Params.blogs }}
+            <a href="{{ .link }}" target="_blank" rel="noopener" class="lab-card lab-card-blog">
                 <div class="lab-card-content">
                     <div class="lab-card-header">
-                        <span class="lab-card-date">{{ .Date.Format "Jan 02, 2006" }}</span>
-                        {{ with .Params.platform }}
+                        <span class="lab-card-date">{{ if reflect.IsMap . }}{{ .date }}{{ else }}{{ .date | time.Format
+                            "Jan 02, 2006" }}{{ end }}</span>
+                        {{ with .platform }}
                         <span class="platform-badge platform-{{ . | urlize }}">{{ . }}</span>
                         {{ end }}
                     </div>
-                    <h3 class="lab-card-title">{{ .Title }}</h3>
-                    <p class="lab-card-desc">{{ .Summary | truncate 120 }}</p>
+                    <h3 class="lab-card-title">{{ .title }}</h3>
+                    <p class="lab-card-desc">{{ .summary | truncate 120 }}</p>
                     <div class="lab-card-meta">
-                        {{ with .Params.tags }}
+                        {{ with .tags }}
                         <div class="lab-card-tags">
                             {{ range first 3 . }}<span class="tag-sm">{{ . }}</span>{{ end }}
                         </div>
@@ -67,10 +69,16 @@
                 </div>
                 <span class="lab-card-arrow">↗</span>
             </a>
-            {{ else }}
-            <p style="color: var(--text-muted); grid-column: 1/-1;">No blogs yet.</p>
             {{ end }}
         </div>
     </section>
+    {{ end }}
+
+    {{ if and (not .Params.playlists) (not .Params.blogs) }}
+    <div class="empty-state" style="text-align: center; padding: 4rem 0; color: var(--text-muted);">
+        <p style="font-size: 3rem; margin-bottom: 1rem;">📝</p>
+        <p>Lab notes coming soon...</p>
+    </div>
+    {{ end }}
 </div>
 {{ end }}
