@@ -1,0 +1,207 @@
+{{ define "main" }}
+<div class="container main-content">
+    {{ if .Sections }}
+    <!-- ALL CHALLENGES VIEW -->
+    <div class="page-hero">
+        <h1>{{ .Title }}</h1>
+        <p class="page-subtitle">{{ .Description | default .Summary }}</p>
+    </div>
+
+    {{ $active := where .Sections "Params.status" "in-progress" }}
+    {{ $completed := where .Sections "Params.status" "completed" }}
+
+    {{ if $active }}
+    <h2 class="section-heading">🚀 Active Challenges</h2>
+    <div class="challenges-main-timeline">
+        {{ range $active.ByDate.Reverse }}
+        <div class="main-timeline-item">
+            <div class="main-timeline-marker">
+                <div class="marker-dot active"></div>
+                <div class="marker-line"></div>
+            </div>
+            <div class="main-timeline-content">
+                <article class="challenge-card">
+                    <div class="challenge-status-badge in-progress">Active</div>
+                    <div class="challenge-card-header">
+                        <span class="challenge-card-date">
+                            {{ with .Params.start_date }}{{ (time .).Format "Jan 2006" }}{{ end }}
+                            {{ with .Params.end_date }} – {{ (time .).Format "Jan 2006" }}{{ end }}
+                            {{ if and (not .Params.end_date) (eq .Params.status "in-progress") }} – Present{{ end }}
+                        </span>
+                        <h3 class="challenge-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                    </div>
+                    <p class="challenge-desc">{{ .Params.description }}</p>
+
+                    <div class="challenge-tags"
+                        style="margin-bottom: var(--space-md); display: flex; gap: 8px; flex-wrap: wrap;">
+                        {{ range .Params.tags }}
+                        <span class="tag"
+                            style="font-size: 0.75rem; color: var(--accent); background: rgba(0, 255, 65, 0.05); padding: 2px 8px; border-radius: 4px;">#{{
+                            . }}</span>
+                        {{ end }}
+                    </div>
+
+                    {{ if and .Params.completed_days .Params.target_days }}
+                    <div class="challenge-stats-mini">
+                        <div class="mini-stat">
+                            <span class="label">Progress</span>
+                            <span class="value">{{ .Params.completed_days }}/{{ .Params.target_days }} Days</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            {{ $percent := div (mul (int .Params.completed_days) 100) (int .Params.target_days) }}
+                            <div class="progress-bar" style="width: {{ $percent }}%"></div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </article>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    {{ if $completed }}
+    <h2 class="section-heading" style="margin-top: 4rem;">🏆 Completed Timeline</h2>
+
+    {{ range $completed.GroupByDate "2006" "desc" }}
+    <h3 class="year-heading"
+        style="margin: 3rem 0 1.5rem; color: var(--accent); font-family: var(--font-mono); font-weight: 800; font-size: 1.8rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; display: inline-block;">
+        {{ .Key }}</h3>
+
+    <div class="challenges-main-timeline">
+        {{ range .Pages.ByDate.Reverse }}
+        <div class="main-timeline-item">
+            <div class="main-timeline-marker">
+                <div class="marker-dot completed"></div>
+                <div class="marker-line"></div>
+            </div>
+            <div class="main-timeline-content">
+                <article class="challenge-card">
+                    <div class="challenge-status-badge completed">Completed</div>
+                    <div class="challenge-card-header">
+                        <span class="challenge-card-date">
+                            {{ with .Params.start_date }}{{ (time .).Format "Jan" }}{{ end }}
+                            {{ with .Params.end_date }} – {{ (time .).Format "Jan" }}{{ end }}
+                        </span>
+                        <h3 class="challenge-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                    </div>
+                    <p class="challenge-desc">{{ .Params.description }}</p>
+
+                    <div class="challenge-tags"
+                        style="margin-bottom: var(--space-md); display: flex; gap: 8px; flex-wrap: wrap;">
+                        {{ range .Params.tags }}
+                        <span class="tag"
+                            style="font-size: 0.75rem; color: var(--accent); background: rgba(0, 255, 65, 0.05); padding: 2px 8px; border-radius: 4px;">#{{
+                            . }}</span>
+                        {{ end }}
+                    </div>
+
+                    {{ if and .Params.completed_days .Params.target_days }}
+                    <div class="challenge-stats-mini">
+                        <div class="mini-stat">
+                            <span class="label">Status</span>
+                            <span class="value">{{ .Params.completed_days }} Days Completed</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </article>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+    {{ end }}
+
+    {{ else }}
+    <!-- SPECIFIC CHALLENGE VIEW (Timeline & Streak) -->
+    <div class="challenge-header">
+        <a href="/challenges/" class="back-link">← All Challenges</a>
+        <h1>{{ .Title }}</h1>
+        <p class="challenge-subtitle">{{ .Params.description }}</p>
+    </div>
+
+    <!-- Streak Dashboard (Only for Active Challenges) -->
+    {{ if ne .Params.status "completed" }}
+    <div class="streak-dashboard">
+        <div class="streak-stat">
+            <span class="stat-icon">🔥</span>
+            <div class="stat-info">
+                <span class="stat-value">{{ .Params.current_streak| default 0 }} Days</span>
+                <span class="stat-label">Current Streak</span>
+            </div>
+        </div>
+        <div class="streak-stat">
+            <span class="stat-icon">🎯</span>
+            <div class="stat-info">
+                {{ $percent := 0 }}
+                {{ if and .Params.completed_days .Params.target_days }}
+                {{ $percent = div (mul (int .Params.completed_days) 100) (int .Params.target_days) }}
+                {{ end }}
+                <span class="stat-value">{{ $percent }}%</span>
+                <span class="stat-label">Completion</span>
+            </div>
+        </div>
+        <div class="streak-stat">
+            <span class="stat-icon">✅</span>
+            <div class="stat-info">
+                <span class="stat-value">{{ .Params.completed_days | default 0 }}/{{ .Params.target_days | default 0
+                    }}</span>
+                <span class="stat-label">Total Days</span>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+
+    <!-- Challenge Content -->
+    <div class="challenge-content-body prose" style="margin-bottom: 3rem;">
+        {{ .Content }}
+    </div>
+
+    <!-- External Link Action -->
+    {{ if .Params.link }}
+    <div class="challenge-external-action" style="margin-top: 2rem; text-align: center;">
+        <a href="{{ .Params.link }}" target="_blank" rel="noopener" class="btn btn-primary">
+            🚀 View All Logs & Progress
+        </a>
+    </div>
+    {{ end }}
+
+    <!-- Timeline View (Only if logs exist) -->
+    {{ if .Params.logs }}
+    <div class="challenge-timeline" style="margin-top: 4rem;">
+        <h2 class="section-heading">Detailed Logs</h2>
+        {{ range (sort .Params.logs "day" "desc") }}
+        <div class="timeline-day">
+            <div class="day-marker">
+                <span class="day-number">#{{ .day }}</span>
+                <div class="day-line"></div>
+            </div>
+            <div class="day-content">
+                <div class="day-header">
+                    <h3 class="day-title">{{ .title }}</h3>
+                    <span class="day-date">{{ (time .date).Format "Jan 02, 2006" | default .date }}</span>
+                </div>
+                <div class="day-body">
+                    {{ .content | markdownify }}
+                </div>
+                {{ if .link }}
+                <div class="day-link-action">
+                    <a href="{{ .link }}" target="_blank" class="btn btn-secondary btn-sm">Read Detail →</a>
+                </div>
+                {{ end }}
+                <div class="day-tags">
+                    {{ range .tags }}
+                    <span class="tag">#{{ . }}</span>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+    {{ end }}
+</div>
+{{ end }}

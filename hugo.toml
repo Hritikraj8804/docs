@@ -42,10 +42,15 @@ summaryLength = 70
     url = "/lab-notes/"
     weight = 4
   [[menu.main]]
+    identifier = "challenges"
+    name = "Challenges"
+    url = "/challenges/"
+    weight = 5
+  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
-    weight = 5
+    weight = 6
 
 [markup]
   [markup.highlight]
