@@ -2,28 +2,82 @@
 <div class="container main-content">
     <div class="page-hero">
         <h1>{{ .Title }}</h1>
-        <p>Short-form technical snippets and quick fixes</p>
+        <p class="page-subtitle">{{ .Description | default "Technical blogs, tutorials, and curated playlists" }}</p>
     </div>
 
-    {{ $pages := .Pages.GroupByDate "January 2006" }}
-    {{ range $pages }}
-    <div class="feed-date-group">
-        <div class="feed-date">━━━ {{ .Key }} ━━━</div>
-        {{ range .Pages }}
-        <article class="feed-item">
-            <span class="feed-marker">▸</span>
-            <div class="feed-content">
-                <h4 class="feed-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-                <p class="feed-excerpt">{{ .Summary | truncate 200 }}</p>
-                <div class="card-tags" style="margin-top: var(--space-sm);">
-                    {{ with .Params.tags }}{{ range first 3 . }}
-                    <span class="tag">{{ . }}</span>
-                    {{ end }}{{ end }}
+    <!-- PLAYLISTS SECTION -->
+    {{ if .Params.playlists }}
+    <section class="lab-section">
+        <div class="section-header">
+            <h2 class="section-heading">📚 Playlists</h2>
+            <p class="section-desc">Curated blog series covering topics in-depth</p>
+        </div>
+        <div class="cards-grid">
+            {{ range .Params.playlists }}
+            <a href="{{ .link }}" target="_blank" rel="noopener" class="lab-card">
+                <div class="lab-card-icon">{{ .icon | default "📖" }}</div>
+                <div class="lab-card-content">
+                    <h3 class="lab-card-title">{{ .title }}</h3>
+                    <p class="lab-card-desc">{{ .description }}</p>
+                    <div class="lab-card-meta">
+                        {{ with .platform }}
+                        <span class="platform-badge platform-{{ . | urlize }}">{{ . }}</span>
+                        {{ end }}
+                        {{ with .tags }}
+                        <div class="lab-card-tags">
+                            {{ range first 2 . }}<span class="tag-sm">{{ . }}</span>{{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
                 </div>
-            </div>
-            <div class="feed-meta">{{ .Date.Format "Jan 2" }}</div>
-        </article>
-        {{ end }}
+                <span class="lab-card-arrow">↗</span>
+            </a>
+            {{ end }}
+        </div>
+    </section>
+
+    <hr class="section-divider">
+    {{ end }}
+
+    <!-- BLOGS SECTION -->
+    {{ if .Params.blogs }}
+    <section class="lab-section">
+        <div class="section-header">
+            <h2 class="section-heading">📝 Blogs</h2>
+            <p class="section-desc">Standalone articles and technical notes</p>
+        </div>
+        <div class="cards-grid">
+            {{ range .Params.blogs }}
+            <a href="{{ .link }}" target="_blank" rel="noopener" class="lab-card lab-card-blog">
+                <div class="lab-card-content">
+                    <div class="lab-card-header">
+                        <span class="lab-card-date">{{ if reflect.IsMap . }}{{ .date }}{{ else }}{{ .date | time.Format
+                            "Jan 02, 2006" }}{{ end }}</span>
+                        {{ with .platform }}
+                        <span class="platform-badge platform-{{ . | urlize }}">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    <h3 class="lab-card-title">{{ .title }}</h3>
+                    <p class="lab-card-desc">{{ .summary | truncate 120 }}</p>
+                    <div class="lab-card-meta">
+                        {{ with .tags }}
+                        <div class="lab-card-tags">
+                            {{ range first 3 . }}<span class="tag-sm">{{ . }}</span>{{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+                <span class="lab-card-arrow">↗</span>
+            </a>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{ if and (not .Params.playlists) (not .Params.blogs) }}
+    <div class="empty-state" style="text-align: center; padding: 4rem 0; color: var(--text-muted);">
+        <p style="font-size: 3rem; margin-bottom: 1rem;">📝</p>
+        <p>Lab notes coming soon...</p>
     </div>
     {{ end }}
 </div>

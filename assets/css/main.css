@@ -1948,6 +1948,179 @@ li::marker {
   font-weight: bold;
 }
 
+
 .prose strong {
   color: var(--text-primary);
+}
+
+
+/* ============================================
+   LAB NOTES - UNIFIED CARDS
+   ============================================ */
+
+.lab-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.section-header {
+  margin-bottom: var(--space-lg);
+}
+
+.section-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: var(--space-xs);
+}
+
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: var(--space-2xl) 0;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-lg);
+}
+
+.lab-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.lab-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px var(--shadow);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+.lab-card:hover .lab-card-title {
+  text-decoration: underline;
+}
+
+.lab-card-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.lab-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.lab-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.lab-card-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.lab-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+  line-height: 1.4;
+}
+
+.lab-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+}
+
+.lab-card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.platform-badge {
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.platform-hashnode {
+  background: #2962ff;
+  color: white;
+}
+
+.platform-devto,
+.platform-dev-to {
+  background: #0a0a0a;
+  color: white;
+}
+
+.platform-medium {
+  background: #1a8917;
+  color: white;
+}
+
+.lab-card-tags {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.tag-sm {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+}
+
+.lab-card-arrow {
+  font-size: 1.2rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.lab-card:hover .lab-card-arrow {
+  opacity: 1;
+}
+
+/* Blog card variant - no icon */
+.lab-card-blog {
+  flex-direction: column;
+}
+
+.lab-card-blog .lab-card-arrow {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+}
+
+@media (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-card {
+    flex-direction: column;
+  }
 }

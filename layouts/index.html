@@ -65,15 +65,33 @@
     <!-- Latest Lab Notes -->
     <section style="margin-top: var(--space-3xl);">
         <h2>Latest Lab Notes</h2>
-        {{ range first 3 (where .Site.RegularPages "Section" "lab-notes") }}
-        <div class="feed-item">
-            <span class="feed-marker">▸</span>
-            <div class="feed-content">
-                <h4 class="feed-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
-                <p class="feed-excerpt">{{ .Summary | truncate 100 }}</p>
-            </div>
-            <div class="feed-meta">{{ .Date.Format "Jan 2" }}</div>
-        </div>
+        {{ $labNotes := .Site.GetPage "/lab-notes" }}
+        {{ if $labNotes.Params.blogs }}
+        {{ range first 2 $labNotes.Params.blogs }}
+        <a href="{{ .link }}" target="_blank" rel="noopener" style="text-decoration: none;">
+            <article class="feed-item"
+                style="position: relative; transition: all var(--transition-base); padding: var(--space-md); border-radius: var(--radius-md);">
+                <style>
+                    .feed-item:hover {
+                        background: var(--accent-dim);
+                        transform: translateX(5px);
+                    }
+
+                    .feed-item:hover .feed-title {
+                        text-decoration: underline;
+                    }
+                </style>
+                <span class="feed-marker">▸</span>
+                <div class="feed-content">
+                    <h4 class="feed-title"
+                        style="margin: 0; color: var(--text-primary); transition: color var(--transition-fast);">{{
+                        .title }}</h4>
+                    <p class="feed-excerpt" style="margin: 0.25rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">
+                        {{ .summary | truncate 100 }}</p>
+                </div>
+            </article>
+        </a>
+        {{ end }}
         {{ end }}
         <p style="text-align: center; margin-top: var(--space-lg);">
             <a href="/lab-notes/" class="btn btn-ghost">Read All Notes →</a>
