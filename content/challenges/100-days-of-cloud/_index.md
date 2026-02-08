@@ -1,19 +1,19 @@
 ---
-title: "#100DaysOfCloud"
+title: "#50DaysOfCloud"
 date: 2025-12-01
-challenge_name: "100 Days of Cloud"
+challenge_name: "50 Days of Cloud"
 start_date: 2025-12-01
-target_days: 100
-current_streak: 40
-completed_days: 40
-status: "in-progress"
-description: "A commitment to learn and build in the cloud for 100 consecutive days, focusing on real-world hands-on labs."
+target_days: 50
+current_streak: 50
+completed_days: 50
+status: "completed"
+description: "A commitment to learn and build in the cloud for 50 consecutive days, focusing on real-world hands-on labs."
 featured: true
 tags: ["AWS", "Azure", "Cloud"]
 link: "https://medium.com/@hritikraj8804/list/100daysofcloud-7367f235a8b8"
 ---
 
-The **#100DaysOfCloud** challenge is a structured, hands-on learning journey designed to build real cloud confidence and job-ready skills. By committing to one hands-on task per day for 100 days, I am exploring the deep complexities of cloud platforms.
+The **#50DaysOfCloud** challenge is a structured, hands-on learning journey designed to build real cloud confidence and job-ready skills. By committing to one hands-on task per day for 50 days, I am exploring the deep complexities of cloud platforms.
 
 ### 🎯 Learning Objectives
 - **Multi-Cloud Expertise**: Understanding how different providers like **AWS** and **Azure** solve infrastructure problems.
