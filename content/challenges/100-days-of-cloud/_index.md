@@ -3,8 +3,8 @@ title: "#50DaysOfCloud"
 date: 2025-12-01
 challenge_name: "50 Days of Cloud"
 start_date: 2025-12-01
+end_date: 2026-01-30
 target_days: 50
-current_streak: 50
 completed_days: 50
 status: "completed"
 description: "A commitment to learn and build in the cloud for 50 consecutive days, focusing on real-world hands-on labs."
