@@ -12,11 +12,14 @@
         </div>
         <div class="filter-tags-row">
             <button class="filter-tag-btn active" data-tag="all">All Tech</button>
+            {{ $allowedTags := slice "docker" "kubernetes" "cloud" "aws" "terraform" "monitoring" "ci/cd" "python" "ansible" }}
             {{ $allTags := slice }}
             {{ range .Pages }}
                 {{ with .Params.tags }}
                     {{ range . }}
-                        {{ $allTags = $allTags | append . }}
+                        {{ if in $allowedTags (. | lower) }}
+                            {{ $allTags = $allTags | append . }}
+                        {{ end }}
                     {{ end }}
                 {{ end }}
             {{ end }}
