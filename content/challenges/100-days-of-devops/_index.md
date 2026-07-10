@@ -1,5 +1,5 @@
 ---
-title: "#100DaysOfDevOps"
+title: "100DaysOfDevOps"
 date: 2025-07-01
 challenge_name: "100 Days of DevOps"
 start_date: 2025-07-01

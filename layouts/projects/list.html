@@ -2,32 +2,115 @@
 <div class="container main-content">
     <div class="page-hero">
         <h1>{{ .Title }}</h1>
-        {{ with .Description }}<p>{{ . }}</p>{{ end }}
+        {{ with .Description }}<p class="page-subtitle">{{ . }}</p>{{ end }}
     </div>
 
+    <!-- Filter and Search controls -->
+    <div class="filter-search-container">
+        <div class="filter-search-row">
+            <input type="text" id="project-search" class="filter-search-input" placeholder="🔍 Search projects by title, description, or technology..." aria-label="Search projects" />
+        </div>
+        <div class="filter-tags-row">
+            <button class="filter-tag-btn active" data-tag="all">All Tech</button>
+            {{ $allTags := slice }}
+            {{ range .Pages }}
+                {{ with .Params.tags }}
+                    {{ range . }}
+                        {{ $allTags = $allTags | append . }}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+            {{ range uniq $allTags }}
+                <button class="filter-tag-btn" data-tag="{{ . | urlize }}">{{ . }}</button>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Project list grouped by year -->
     {{ range .Pages.GroupByDate "2006" }}
-    <h2
-        style="margin-top: var(--space-2xl); border-bottom: 2px solid var(--border-light); padding-bottom: var(--space-sm);">
-        {{ .Key }}</h2>
-    <div class="card-grid">
-        {{ range .Pages }}
-        <article class="card">
-            <span class="project-month">{{ .Date.Format "Jan" }}</span>
-            {{ if .Params.link }}<span class="live-indicator" title="Live Project Available"></span>{{ end }}
-            <h3 class="card-title">
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-            </h3>
-            <p class="card-description">{{ .Params.description | default .Summary | truncate 150 }}</p>
-            <div class="card-meta">
-                <div class="card-tags">
-                    {{ with .Params.tags }}{{ range first 4 . }}
-                    <span class="tag">{{ . }}</span>
-                    {{ end }}{{ end }}
+    <div class="project-year-section" data-year="{{ .Key }}">
+        <h2 style="margin-top: var(--space-2xl); border-bottom: 2px solid var(--border-light); padding-bottom: var(--space-sm);">{{ .Key }}</h2>
+        <div class="card-grid">
+            {{ range .Pages }}
+            <article class="card project-card" data-title="{{ .Title | lower }}" data-description="{{ .Params.description | default .Summary | lower }}" data-tags="{{ with .Params.tags }}{{ range . }}{{ . | urlize }} {{ end }}{{ end }}">
+                <span class="project-month">{{ .Date.Format "Jan" }}</span>
+                {{ if .Params.link }}<span class="live-indicator" title="Live Project Available"></span>{{ end }}
+                <h3 class="card-title">
+                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h3>
+                <p class="card-description">{{ .Params.description | default .Summary | truncate 150 }}</p>
+                <div class="card-meta">
+                    <div class="card-tags">
+                        {{ with .Params.tags }}{{ range first 4 . }}
+                        <span class="tag">{{ . }}</span>
+                        {{ end }}{{ end }}
+                    </div>
                 </div>
-            </div>
-        </article>
-        {{ end }}
+            </article>
+            {{ end }}
+        </div>
     </div>
     {{ end }}
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('project-search');
+        const tagButtons = document.querySelectorAll('.filter-tag-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        const yearSections = document.querySelectorAll('.project-year-section');
+
+        let activeTag = 'all';
+        let searchQuery = '';
+
+        function filterProjects() {
+            projectCards.forEach(card => {
+                const title = card.getAttribute('data-title') || '';
+                const description = card.getAttribute('data-description') || '';
+                const tags = card.getAttribute('data-tags') || '';
+                
+                const matchesSearch = title.includes(searchQuery) || description.includes(searchQuery) || tags.includes(searchQuery);
+                const matchesTag = activeTag === 'all' || tags.split(' ').includes(activeTag);
+
+                if (matchesSearch && matchesTag) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Hide/show year headings based on whether they contain visible cards
+            yearSections.forEach(section => {
+                let hasVisible = false;
+                section.querySelectorAll('.project-card').forEach(card => {
+                    if (card.style.display !== 'none') {
+                        hasVisible = true;
+                    }
+                });
+
+                if (hasVisible) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+
+        // Search input listener
+        searchInput.addEventListener('input', function(e) {
+            searchQuery = e.target.value.toLowerCase().trim();
+            filterProjects();
+        });
+
+        // Tag buttons listener
+        tagButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tagButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeTag = btn.getAttribute('data-tag');
+                filterProjects();
+            });
+        });
+    });
+</script>
 {{ end }}

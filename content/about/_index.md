@@ -27,19 +27,18 @@ I specialize in **Kubernetes**, **Terraform**, and **CI/CD pipelines**. When I'm
   <div class="skill-category">
     <h4 class="skill-category-title">Infrastructure</h4>
     <ul class="skill-list">
-      <li>Kubernetes / EKS / GKE</li>
-      <li>Terraform / Pulumi</li>
-      <li>AWS / GCP / Azure</li>
-      <li>Docker / Containerd</li>
+      <li>Kubernetes</li>
+      <li>Terraform</li>
+      <li>Docker</li>
     </ul>
   </div>
   <div class="skill-category">
     <h4 class="skill-category-title">CI/CD & GitOps</h4>
     <ul class="skill-list">
       <li>GitHub Actions</li>
-      <li>ArgoCD / Flux</li>
+      <li>ArgoCD</li>
       <li>Jenkins / GitLab CI</li>
-      <li>Helm / Kustomize</li>
+      <li>Helm</li>
     </ul>
   </div>
   <div class="skill-category">
@@ -48,17 +47,34 @@ I specialize in **Kubernetes**, **Terraform**, and **CI/CD pipelines**. When I'm
       <li>Go</li>
       <li>Python</li>
       <li>Bash / Shell</li>
-      <li>TypeScript</li>
     </ul>
   </div>
   <div class="skill-category">
     <h4 class="skill-category-title">Observability</h4>
     <ul class="skill-list">
-      <li>Prometheus / Grafana</li>
+      <li>Prometheus</li>
+      <li>Grafana</li>
       <li>Datadog</li>
       <li>ELK Stack</li>
-      <li>OpenTelemetry</li>
     </ul>
+  </div>
+  <div class="skill-category">
+    <h4 class="skill-category-title">Cloud Provider</h4>
+    <ul class="skill-list">
+      <li>AWS</li>
+      <li>GCP</li>
+      <li>AZURE</li>
+    </ul>
+  </div>
+</div>
+
+## GitHub Activity
+
+<div class="github-contrib-container">
+  <h3>🐙 Contributions Calendar</h3>
+  <div class="github-contrib-grid">
+    <img src="https://ghchart.rshah.org/0ea5e9/Hritikraj8804" class="github-contrib-light" alt="Hritik Raj's GitHub Contribution Calendar" />
+    <img src="https://ghchart.rshah.org/00ff41/Hritikraj8804" class="github-contrib-dark" alt="Hritik Raj's GitHub Contribution Calendar" />
   </div>
 </div>
 
