@@ -33,8 +33,82 @@
         </div>
     </div>
 
+    <!-- Right Now Status Banner -->
+    <div class="status-banner">
+        <div class="status-item">
+            <span class="status-icon">🎯</span>
+            <div class="status-info">
+                <span class="status-label">Currently Focusing On</span>
+                <span class="status-value">MLOps & LLM Automation</span>
+            </div>
+        </div>
+        <div class="status-item">
+            <span class="status-icon">💼</span>
+            <div class="status-info">
+                <span class="status-label">Availability</span>
+                <span class="status-value">Open to DevOps & SRE roles</span>
+            </div>
+        </div>
+        <div class="status-item">
+            <span class="status-icon">📍</span>
+            <div class="status-info">
+                <span class="status-label">Location</span>
+                <span class="status-value">India (GMT +5:30)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Stack Interactive Wall -->
+    <section class="tech-stack-section" style="margin-top: var(--space-3xl);">
+        <h2>Core Tech Stack</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <span class="tech-icon">☸️</span>
+                <div class="tech-info">
+                    <h4>Kubernetes</h4>
+                    <p>Container orchestration, Helm charts, self-healing deployments, and multi-node cluster configuration.</p>
+                </div>
+            </div>
+            <div class="tech-card">
+                <span class="tech-icon">🌐</span>
+                <div class="tech-info">
+                    <h4>Terraform</h4>
+                    <p>Infrastructure as Code, state backend management, and provisioning on AWS & Azure.</p>
+                </div>
+            </div>
+            <div class="tech-card">
+                <span class="tech-icon">☁️</span>
+                <div class="tech-info">
+                    <h4>AWS & Azure</h4>
+                    <p>Multi-cloud operations, serverless computing, virtual networks, IAM security, and automation.</p>
+                </div>
+            </div>
+            <div class="tech-card">
+                <span class="tech-icon">🐳</span>
+                <div class="tech-info">
+                    <h4>Docker</h4>
+                    <p>Containerization, multi-stage builds optimization, repository configuration, and microservices.</p>
+                </div>
+            </div>
+            <div class="tech-card">
+                <span class="tech-icon">🐍</span>
+                <div class="tech-info">
+                    <h4>Python & Go</h4>
+                    <p>Automation scripts, diagnostic utilities, API helpers, and custom backend devops services.</p>
+                </div>
+            </div>
+            <div class="tech-card">
+                <span class="tech-icon">♾️</span>
+                <div class="tech-info">
+                    <h4>CI/CD & GitOps</h4>
+                    <p>Automated deployment pipelines with GitHub Actions, custom scripting, and Git-driven automation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Featured Projects -->
-    <section>
+    <section style="margin-top: var(--space-3xl);">
         <h2>Featured Projects</h2>
         <div class="card-grid">
             {{ range (where .Site.RegularPages "Params.featured" true) }}
